@@ -15,11 +15,11 @@ const Home = () => {
           title,
         }));
 
-        // setTrendingMovies(prevTrendingMovies => [
-        //   ...prevTrendingMovies,
-        //   ...formatedTrendingMovies,
-        // ]);
-        setTrendingMovies(formatedTrendingMovies);
+        setTrendingMovies(prevTrendingMovies => [
+          ...prevTrendingMovies,
+          ...formatedTrendingMovies,
+        ]);
+        // setTrendingMovies(formatedTrendingMovies);
       } catch {
         // alert('error');
       } finally {
