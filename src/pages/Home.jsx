@@ -1,27 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import * as MoviesService from 'services/movies-service';
+import { Link, useLocation } from 'react-router-dom';
+import { getTrending } from 'services/movies-service';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const location = useLocation();
+
   useEffect(() => {
     async function addTrendingMovies() {
       try {
-        const { data } = await MoviesService.getTrending();
-        console.log(data);
+        const { data } = await getTrending();
 
         const formatedTrendingMovies = data.results.map(({ id, title }) => ({
           id,
           title,
         }));
 
-        setTrendingMovies(prevTrendingMovies => [
-          ...prevTrendingMovies,
-          ...formatedTrendingMovies,
-        ]);
-        // setTrendingMovies(formatedTrendingMovies);
+        setTrendingMovies(formatedTrendingMovies);
       } catch {
-        // alert('error');
+        alert('error');
       } finally {
       }
     }
@@ -34,7 +31,9 @@ const Home = () => {
       <ul>
         {trendingMovies.map(({ id, title }) => (
           <li key={id}>
-            <Link>{title}</Link>
+            <Link to={`movies/${id}`} state={{ from: location }}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>
