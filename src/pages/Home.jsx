@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getTrending } from 'services/movies-service';
+import {
+  StyledLink,
+  FilmCard,
+  Image,
+  Title,
+  Films,
+  FilmTitle,
+} from './Home.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -11,10 +19,13 @@ const Home = () => {
       try {
         const { data } = await getTrending();
 
-        const formatedTrendingMovies = data.results.map(({ id, title }) => ({
-          id,
-          title,
-        }));
+        const formatedTrendingMovies = data.results.map(
+          ({ id, title, poster_path }) => ({
+            id,
+            title,
+            poster_path,
+          })
+        );
 
         setTrendingMovies(formatedTrendingMovies);
       } catch {
@@ -27,16 +38,21 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Trending today</h1>
-      <ul>
-        {trendingMovies.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
+      <Title>Trending today</Title>
+      <Films>
+        {trendingMovies.map(({ id, title, poster_path }) => (
+          <FilmCard key={id}>
+            <StyledLink to={`movies/${id}`} state={{ from: location }}>
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                width="50px"
+                alt=""
+              />
+              <FilmTitle>{title}</FilmTitle>
+            </StyledLink>
+          </FilmCard>
         ))}
-      </ul>
+      </Films>
     </div>
   );
 };
