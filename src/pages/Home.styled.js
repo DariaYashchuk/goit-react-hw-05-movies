@@ -21,6 +21,12 @@ export const FilmCard = styled.li`
 
   border-radius: 8px;
   overflow: hidden;
+
+  position: relative;
+
+  &:hover section {
+    transform: translateY(-100%);
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -38,12 +44,18 @@ export const Image = styled.img`
   /* height: 256px; */
   width: 100%;
   height: 100%;
-  margin-bottom: 14px;
 `;
 
-export const FilmDescWrap = styled.div`
+export const FilmDescWrap = styled.section`
   width: 100%;
-  position: relative;
+
+  position: absolute;
+
+  background: rgba(16, 16, 16, 0.29);
+  backdrop-filter: blur(2px);
+
+  transform: translateY(0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   svg {
     position: absolute;
