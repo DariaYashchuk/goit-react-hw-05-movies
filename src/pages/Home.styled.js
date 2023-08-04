@@ -2,22 +2,33 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
-  margin-top: 60px;
+  margin-top: 30px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+  }
 `;
 
 export const Films = styled.ul`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 24px 16px;
 
   margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const FilmCard = styled.li`
   display: block;
   width: 267px;
   height: 379px;
-  background-color: #717d7c;
 
   border-radius: 8px;
   overflow: hidden;
@@ -27,12 +38,18 @@ export const FilmCard = styled.li`
   &:hover section {
     transform: translateY(-100%);
   }
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    width: 236px;
+    height: 335px;
+  }
 `;
 
 export const StyledLink = styled(Link)`
   display: inline-block;
   padding: 5px 24px;
   border-radius: 20px;
+  background-color: #053ba3;
 
   position: relative;
   left: 130px;
@@ -47,13 +64,15 @@ export const FilmDescWrap = styled.section`
   width: 100%;
   padding: 5px;
 
-  position: relative;
-
   background: rgba(16, 16, 16, 0.29);
   backdrop-filter: blur(2px);
 
-  transform: translateY(0);
+  transform: translateY(-100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 769px) {
+    transform: translateY(0);
+  }
 
   svg {
     position: absolute;
@@ -88,6 +107,12 @@ export const Title = styled.h2`
   svg {
     position: relative;
     top: -8px;
-    left: 8px;
+    left: -6px;
+
+    display: none;
+
+    @media screen and (min-width: 400px) {
+      display: inline-block;
+    }
   }
 `;

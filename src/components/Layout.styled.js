@@ -3,15 +3,36 @@ import { NavLink, Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  padding: 0 74px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media screen and (min-width: 428px) {
+    width: 428px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 1024px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
 `;
 
 export const Search = styled(Link)`
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
+  display: none;
 
   margin-left: auto;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 `;
 
 export const Header = styled.header`
@@ -20,10 +41,19 @@ export const Header = styled.header`
   height: 72px;
 `;
 
-export const LogoWrap = styled.ul`
-  /* display: flex;
-  align-items: center; */
+export const BurderMenu = styled.button`
+  margin-left: auto;
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
+
+export const LogoWrap = styled.ul``;
 
 export const Logo = styled(Link)`
   svg {
@@ -68,12 +98,12 @@ export const LogoNameLink = styled(Link)`
 `;
 
 export const NavBar = styled.ul`
-  display: flex;
+  display: none;
   color: white;
   align-items: center;
   height: 100%;
 
-  margin-left: 330px;
+  margin-left: 90px;
   gap: 40px;
 
   & li {
@@ -82,20 +112,14 @@ export const NavBar = styled.ul`
     display: flex;
     align-items: center;
   }
-  /* & li:hover:after {
-    opacity: 1;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
-  & li:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 4px;
-    border-radius: 2px;
-    background-color: #053ba3;
-    opacity: 0;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  } */
+  @media screen and (min-width: 1024px) {
+    margin-left: 220px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-left: 330px;
+  }
 `;

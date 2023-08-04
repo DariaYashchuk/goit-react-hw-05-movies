@@ -9,7 +9,11 @@ import {
   LogoNameLink,
   LogoWrap,
   Search,
+  BurderMenu,
 } from './Layout.styled';
+
+import { BiMenu } from 'react-icons/bi';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const Layout = () => {
   return (
@@ -49,7 +53,14 @@ const Layout = () => {
             <StyledNavLink to="/movies">Selected</StyledNavLink>
           </li> */}
         </NavBar>
-        <Search></Search>
+        <Search>
+          <Search>
+            <AiOutlineSearch />
+          </Search>
+        </Search>
+        <BurderMenu>
+          <BiMenu />
+        </BurderMenu>
       </Header>
       <main>
         <Suspense fallback={<div>Loading...</div>}>
