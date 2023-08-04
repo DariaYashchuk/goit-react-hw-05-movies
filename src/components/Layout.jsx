@@ -45,9 +45,9 @@ const Layout = () => {
             <StyledNavLink to="/movies">Movies</StyledNavLink>
           </li>
 
-          <li>
+          {/* <li>
             <StyledNavLink to="/movies">Selected</StyledNavLink>
-          </li>
+          </li> */}
         </NavBar>
         <Search></Search>
       </Header>

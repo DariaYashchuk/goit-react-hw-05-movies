@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { AiOutlineSearch } from 'react-icons/ai';
+
+import { Input, Form, Button } from './SearchBar.styled';
+
 const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
@@ -20,17 +24,18 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <Input
         type="text"
         value={query}
         onChange={handleInputChange}
         autoComplete="off"
-        autoFocus
       />
 
-      <button type="submit">Search</button>
-    </form>
+      <Button type="submit">
+        <AiOutlineSearch />
+      </Button>
+    </Form>
   );
 };
 

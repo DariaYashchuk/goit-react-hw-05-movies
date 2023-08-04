@@ -33,23 +33,21 @@ export const StyledLink = styled(Link)`
   display: inline-block;
   padding: 5px 24px;
   border-radius: 20px;
-  background: #053ba3;
 
   position: relative;
   left: 130px;
 `;
 
 export const Image = styled.img`
-  /* width: 180px; */
-  /* height: 256px; */
   width: 100%;
   height: 100%;
 `;
 
 export const FilmDescWrap = styled.section`
   width: 100%;
+  padding: 5px;
 
-  position: absolute;
+  position: relative;
 
   background: rgba(16, 16, 16, 0.29);
   backdrop-filter: blur(2px);
@@ -83,7 +81,6 @@ export const Date = styled.p`
 `;
 
 export const Title = styled.h2`
-  /* font-family: DM Sans; */
   font-family: Nunito;
   font-size: 30px;
   font-weight: 500;
