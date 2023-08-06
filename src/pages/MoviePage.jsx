@@ -1,6 +1,16 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef, Suspense } from 'react';
 import { getMovieDetails } from 'services/movies-service';
+import {
+  Section,
+  GoBackButton,
+  FilmImage,
+  FilmSection,
+  FilmInfoSection,
+  FilmTitle,
+  Title,
+  Details,
+} from './MoviePage.styled';
 
 const MoviePage = () => {
   const { movieId } = useParams();
@@ -15,12 +25,12 @@ const MoviePage = () => {
 
         const names = data.genres.map(genre => genre.name);
 
-        const { id, title, popularity, overview, poster_path } = data;
+        const { id, title, vote_average, overview, poster_path } = data;
 
         setMovieDetails({
           id,
           title,
-          popularity,
+          vote_average: Number(vote_average).toFixed(1),
           overview,
           names,
           poster_path,
@@ -36,25 +46,28 @@ const MoviePage = () => {
   return (
     <div>
       {movieDetails && (
-        <div>
-          <div>
-            <Link to={backLinkLocation.current}>Go Back</Link>
-          </div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-            alt=""
-            width="300px"
-          />
-          <h1>{movieDetails.title}</h1>
-          <p>User score: {movieDetails.popularity}</p>
-          <h2>Overview</h2>
-          <p>{movieDetails.overview}</p>
-          <h2>Genres</h2>
-          <ul>
-            {movieDetails.names &&
-              movieDetails.names.map(name => <li key={name}>{name}</li>)}
-          </ul>
-          <h2>Additinal information</h2>
+        <Section>
+          <GoBackButton to={backLinkLocation.current}>Go Back</GoBackButton>
+          <FilmSection>
+            <FilmImage
+              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              alt=""
+            />
+            <FilmInfoSection>
+              <FilmTitle>{movieDetails.title}</FilmTitle>
+              <Details>User score: {movieDetails.vote_average}</Details>
+              <Title>Overview</Title>
+              <Details>{movieDetails.overview}</Details>
+              <Title>Genres</Title>
+              <Details>
+                <ul>
+                  {movieDetails.names &&
+                    movieDetails.names.map(name => <li key={name}>{name}</li>)}
+                </ul>
+              </Details>
+            </FilmInfoSection>
+          </FilmSection>
+          <Title>Additinal information</Title>
           <ul>
             <li>
               <Link to="cast">Cast</Link>
@@ -66,7 +79,7 @@ const MoviePage = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
-        </div>
+        </Section>
       )}
     </div>
   );

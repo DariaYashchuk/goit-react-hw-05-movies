@@ -69,7 +69,6 @@ const Home = () => {
           <FilmCard key={id}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              width="50px"
               alt=""
             />
             <FilmDescWrap>

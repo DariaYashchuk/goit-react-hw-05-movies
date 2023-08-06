@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
   margin-top: 30px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;

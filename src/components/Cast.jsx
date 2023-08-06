@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieCredits } from 'services/movies-service';
+import { CastImage, CastInfo, OneInfo, Name } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -15,7 +16,9 @@ const Cast = () => {
         const formatedCast = cast.map(({ name, character, profile_path }) => ({
           name,
           character,
-          img: `https://image.tmdb.org/t/p/w500${profile_path}`,
+          img: profile_path
+            ? `https://image.tmdb.org/t/p/w500${profile_path}`
+            : `https://joadre.com/wp-content/uploads/2019/02/no-image.jpg`,
         }));
 
         setCastDetails(formatedCast);
@@ -28,21 +31,17 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <ul>
-        {castDetails &&
-          castDetails.map(({ name, character, img }) => (
-            <li key={name}>
-              <div>
-                <img src={img} alt={name} width="200px" />
+    <CastInfo>
+      {castDetails &&
+        castDetails.map(({ name, character, img }) => (
+          <OneInfo key={name}>
+            <CastImage src={img} alt={name} />
 
-                <h3>{name}</h3>
-                <p>{character}</p>
-              </div>
-            </li>
-          ))}
-      </ul>
-    </div>
+            <Name>{name}</Name>
+            <p>{character}</p>
+          </OneInfo>
+        ))}
+    </CastInfo>
   );
 };
 
