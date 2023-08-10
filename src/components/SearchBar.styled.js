@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const Form = styled.form`
   display: flex;
   align-items: center;
-  /*  */
 `;
 
 export const Input = styled.input`
@@ -43,5 +42,4 @@ export const Button = styled.button`
       fill: #053ba3;
     }
   }
-  /*  */
 `;

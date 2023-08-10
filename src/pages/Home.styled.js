@@ -91,7 +91,7 @@ export const FilmTitle = styled.h2`
   font-weight: 400;
   text-transform: uppercase;
 
-  width: 220px;
+  max-width: 220px;
 `;
 
 export const Date = styled.p`

@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Search = styled(Link)`
+export const Search = styled(NavLink)`
   display: none;
 
   margin-left: auto;

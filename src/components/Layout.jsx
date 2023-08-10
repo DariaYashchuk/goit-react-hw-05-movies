@@ -53,10 +53,9 @@ const Layout = () => {
             <StyledNavLink to="/movies">Selected</StyledNavLink>
           </li> */}
         </NavBar>
-        <Search>
-          <Search>
-            <AiOutlineSearch />
-          </Search>
+
+        <Search to="/movies">
+          <AiOutlineSearch />
         </Search>
         <BurderMenu>
           <BiMenu />
