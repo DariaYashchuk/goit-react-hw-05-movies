@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react';
 import * as MoviesService from 'services/movies-service';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import SearchBar from 'components/SearchBar';
+import {
+  Section,
+  FilmCard,
+  Films,
+  FilmDescWrap,
+  FilmTitle,
+  Image,
+} from './Movies.styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,10 +32,13 @@ const Movies = () => {
           return;
         }
 
-        const formatedFilteredMovies = data.results.map(({ id, title }) => ({
-          id,
-          title,
-        }));
+        const formatedFilteredMovies = data.results.map(
+          ({ id, title, poster_path }) => ({
+            id,
+            title,
+            poster_path,
+          })
+        );
 
         setFilteredMovies(prevFilteredMovies => [
           ...prevFilteredMovies,
@@ -55,20 +66,26 @@ const Movies = () => {
   };
 
   return (
-    <div>
+    <Section>
       <SearchBar onSubmit={handleFormSubmit} />
 
-      <ul>
-        {filteredMovies.map(({ id, title }) => (
-          <li key={id}>
+      <Films>
+        {filteredMovies.map(({ id, title, poster_path }) => (
+          <FilmCard key={id}>
             <Link to={`${id}`} id={id} state={{ from: location }}>
-              {title}
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                alt={title}
+              />
+              <FilmDescWrap>
+                <FilmTitle>{title}</FilmTitle>
+              </FilmDescWrap>
             </Link>
-          </li>
+          </FilmCard>
         ))}
-      </ul>
+      </Films>
       {isLoadMoreBtnVisible && <button onClick={onLoadMore}>Load more</button>}
-    </div>
+    </Section>
   );
 };
 export default Movies;

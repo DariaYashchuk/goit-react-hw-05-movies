@@ -30,6 +30,7 @@ const SearchBar = ({ onSubmit }) => {
         value={query}
         onChange={handleInputChange}
         autoComplete="off"
+        placeholder="Search for movie"
       />
 
       <Button type="submit">

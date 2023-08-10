@@ -62,7 +62,6 @@ export const Image = styled.img`
 `;
 
 export const FilmDescWrap = styled.section`
-  width: 100%;
   padding: 5px;
 
   background: rgba(16, 16, 16, 0.29);
@@ -82,6 +81,12 @@ export const FilmDescWrap = styled.section`
     width: 27px;
     height: 27px;
   }
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    svg {
+      left: 200px;
+    }
+  }
 `;
 
 export const FilmTitle = styled.h2`
@@ -90,8 +95,13 @@ export const FilmTitle = styled.h2`
   line-height: 1.24;
   font-weight: 400;
   text-transform: uppercase;
+  hyphens: auto;
 
-  max-width: 220px;
+  width: 220px;
+
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    width: 180px;
+  }
 `;
 
 export const Date = styled.p`

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Form = styled.form`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Input = styled.input`
@@ -14,7 +15,17 @@ export const Input = styled.input`
   height: 35px;
   width: 250px;
 
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::placeholder {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+  }
 
   &:focus {
     outline: 0;
