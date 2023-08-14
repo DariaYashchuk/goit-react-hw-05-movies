@@ -35,7 +35,7 @@ export const Author = styled.h3`
 
 export const Content = styled.p`
   text-align: justify;
-  color: #e2e2e2;
+
   color: #c6c6c6;
 
   padding: 10px;
