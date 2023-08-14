@@ -38,7 +38,7 @@ const Cast = () => {
             <CastImage src={img} alt={name} />
 
             <Name>{name}</Name>
-            <p>{character}</p>
+            <p>Character: {character}</p>
           </OneInfo>
         ))}
     </CastInfo>

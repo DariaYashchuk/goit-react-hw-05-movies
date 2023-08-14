@@ -1,6 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieReviews } from 'services/movies-service';
+import {
+  Reviews,
+  OneReview,
+  Author,
+  Content,
+  NoReviews,
+} from './Reviews.styled';
+import { BiUser } from 'react-icons/bi';
+import { BsEmojiFrown } from 'react-icons/bs';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -29,19 +38,24 @@ const Cast = () => {
 
   return (
     <div>
-      <h2>Reviews</h2>
-      <ul>
+      <Reviews>
         {reviews.length === 0 ? (
-          <div>Here are no reviews</div>
+          <NoReviews>
+            <BsEmojiFrown />
+            <p>No reviews</p>
+          </NoReviews>
         ) : (
           reviews.map(({ author, content, id }) => (
-            <li key={id}>
-              <h3>Author: {author}</h3>
-              <p>{content}</p>
-            </li>
+            <OneReview key={id}>
+              <Author>
+                <BiUser />
+                {author}
+              </Author>
+              <Content>{content}</Content>
+            </OneReview>
           ))
         )}
-      </ul>
+      </Reviews>
     </div>
   );
 };

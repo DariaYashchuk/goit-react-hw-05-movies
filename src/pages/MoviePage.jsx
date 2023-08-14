@@ -1,8 +1,9 @@
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef, Suspense } from 'react';
 import { getMovieDetails } from 'services/movies-service';
 import {
   Section,
+  Button,
   GoBackButton,
   FilmImage,
   FilmSection,
@@ -10,6 +11,9 @@ import {
   FilmTitle,
   Title,
   Details,
+  ForFlex,
+  Genres,
+  InfoButtons,
 } from './MoviePage.styled';
 
 const MoviePage = () => {
@@ -56,26 +60,32 @@ const MoviePage = () => {
             <FilmInfoSection>
               <FilmTitle>{movieDetails.title}</FilmTitle>
               <Details>User score: {movieDetails.vote_average}</Details>
-              <Title>Overview</Title>
-              <Details>{movieDetails.overview}</Details>
-              <Title>Genres</Title>
-              <Details>
-                <ul>
-                  {movieDetails.names &&
-                    movieDetails.names.map(name => <li key={name}>{name}</li>)}
-                </ul>
-              </Details>
+              <ForFlex>
+                <Title>Overview</Title>
+                <Details>{movieDetails.overview}</Details>
+              </ForFlex>
+              <ForFlex>
+                <Title>Genres</Title>
+                <Details>
+                  <Genres>
+                    {movieDetails.names &&
+                      movieDetails.names.map(name => (
+                        <li key={name}>{name}</li>
+                      ))}
+                  </Genres>
+                </Details>
+              </ForFlex>
             </FilmInfoSection>
           </FilmSection>
           <Title>Additinal information</Title>
-          <ul>
+          <InfoButtons>
             <li>
-              <Link to="cast">Cast</Link>
+              <Button to="cast">Cast</Button>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Button to="reviews">Reviews</Button>
             </li>
-          </ul>
+          </InfoButtons>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
