@@ -7,12 +7,19 @@ import {
   Search,
   BurgerMenu,
   NavBar,
+  NavigationBurger,
 } from './Header.styled';
 
-import { BiMenu } from 'react-icons/bi';
+import { BiMenu, BiX } from 'react-icons/bi';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [isMenuClicked, setIsMenuClicked] = useState(false);
+  const updateMenu = () => {
+    setIsMenuClicked(!isMenuClicked);
+    console.log(isMenuClicked);
+  };
   return (
     <NavBar>
       <LogoWrap>
@@ -36,6 +43,7 @@ export const Header = () => {
           <LogoNameLink to="/">FilmsLand</LogoNameLink>
         </li>
       </LogoWrap>
+
       <Navigation>
         <li>
           <StyledNavLink to="/">Home</StyledNavLink>
@@ -44,18 +52,30 @@ export const Header = () => {
         <li>
           <StyledNavLink to="/movies">Movies</StyledNavLink>
         </li>
-
-        {/* <li>
-            <StyledNavLink to="/movies">Selected</StyledNavLink>
-          </li> */}
       </Navigation>
 
+      <BurgerMenu onClick={updateMenu}>
+        {isMenuClicked ? <BiX /> : <BiMenu />}
+      </BurgerMenu>
+
+      {isMenuClicked && (
+        <NavigationBurger>
+          <li>
+            <StyledNavLink to="/" onClick={isMenuClicked}>
+              Home
+            </StyledNavLink>
+          </li>
+
+          <li>
+            <StyledNavLink to="/movies" onClick={isMenuClicked}>
+              Movies
+            </StyledNavLink>
+          </li>
+        </NavigationBurger>
+      )}
       <Search to="/movies">
         <AiOutlineSearch />
       </Search>
-      <BurgerMenu>
-        <BiMenu />
-      </BurgerMenu>
     </NavBar>
   );
 };

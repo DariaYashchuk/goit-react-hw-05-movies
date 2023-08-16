@@ -12,7 +12,6 @@ export const NavBar = styled.header`
   z-index: 1;
 
   background: #101010;
-  opacity: 0.9;
   backdrop-filter: blur(34px);
 `;
 
@@ -86,6 +85,33 @@ export const Navigation = styled.ul`
   }
   @media screen and (min-width: 1200px) {
     margin-left: 330px;
+  }
+`;
+
+export const NavigationBurger = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+  text-align: center;
+  /* height: 100%; */
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  background-color: #101010;
+  /* right: 0; */
+
+  gap: 10px;
+
+  & li {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    & a {
+      width: 100%;
+    }
   }
 `;
 
