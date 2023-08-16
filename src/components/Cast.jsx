@@ -22,8 +22,8 @@ const Cast = () => {
         }));
 
         setCastDetails(formatedCast);
-      } catch {
-        alert('error');
+      } catch (error) {
+        console.log(error);
       } finally {
       }
     }
