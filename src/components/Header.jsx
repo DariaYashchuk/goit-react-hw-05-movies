@@ -6,6 +6,7 @@ import {
   LogoWrap,
   Search,
   BurgerMenu,
+  NavBar,
 } from './Header.styled';
 
 import { BiMenu } from 'react-icons/bi';
@@ -13,7 +14,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 
 export const Header = () => {
   return (
-    <Header>
+    <NavBar>
       <LogoWrap>
         <li>
           <Logo to="/">
@@ -55,6 +56,6 @@ export const Header = () => {
       <BurgerMenu>
         <BiMenu />
       </BurgerMenu>
-    </Header>
+    </NavBar>
   );
 };

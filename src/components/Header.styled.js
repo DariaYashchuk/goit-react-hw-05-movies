@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
-export const Header = styled.header`
+export const NavBar = styled.header`
   display: flex;
   align-items: center;
   height: 72px;
