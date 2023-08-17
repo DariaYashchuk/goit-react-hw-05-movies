@@ -2,17 +2,21 @@ import { NavLink, Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
+export const HeaderBg = styled.div`
+  backdrop-filter: blur(4px);
+  background: rgba(16, 16, 16, 0.42);
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+`;
+
 export const NavBar = styled.header`
   display: flex;
   align-items: center;
   height: 72px;
 
-  position: sticky;
-  top: 0;
-  z-index: 1;
-
-  background: #101010;
-  backdrop-filter: blur(34px);
+  /* background: #101010; */
 `;
 
 export const NavBarIcon = styled.button``;

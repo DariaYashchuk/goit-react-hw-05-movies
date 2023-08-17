@@ -13,7 +13,6 @@ export const Section = styled.section`
 export const Films = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 24px 16px;
 
   margin-top: 20px;
@@ -22,27 +21,31 @@ export const Films = styled.ul`
     margin-top: 60px;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
   }
 `;
 
 export const FilmCard = styled.li`
   display: block;
-  width: 267px;
-  height: 379px;
+  width: 100%;
+  /* height: auto; */
+  /* width: 267px; */
+  /* height: 379px; */
 
   border-radius: 8px;
   overflow: hidden;
 
   position: relative;
 
+  @media screen and (min-width: 768px) {
+    width: calc(50% - 8px);
+  }
+
   &:hover section {
     transform: translateY(-100%);
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1199px) {
-    width: 236px;
-    height: 335px;
+  @media screen and (min-width: 1024px) {
+    width: calc(25% - 3 * 16px / 4);
   }
 `;
 
@@ -52,8 +55,9 @@ export const StyledLink = styled(Link)`
   border-radius: 20px;
   background-color: #053ba3;
 
-  position: relative;
-  left: 130px;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
 `;
 
 export const Image = styled.img`
@@ -63,20 +67,24 @@ export const Image = styled.img`
 
 export const FilmDescWrap = styled.section`
   padding: 5px;
+  box-sizing: border-box;
 
   background: rgba(16, 16, 16, 0.29);
   backdrop-filter: blur(2px);
 
+  position: absolute;
+  width: 100%;
+
   transform: translateY(-100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     transform: translateY(0);
   }
 
   svg {
     position: absolute;
-    left: 225px;
+    right: 10px;
     display: block;
     width: 27px;
     height: 27px;
@@ -108,6 +116,8 @@ export const Date = styled.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 1.389;
+
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.h2`
